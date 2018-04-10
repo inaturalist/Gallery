@@ -27,6 +27,13 @@ public class GalleryController: UIViewController, PermissionControllerDelegate {
 
   // MARK: - Life cycle
 
+   public override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      for image in cart.images {
+         cart.remove(image)
+      }
+   }
+    
   public override func viewDidLoad() {
     super.viewDidLoad()
 

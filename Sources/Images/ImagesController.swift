@@ -169,6 +169,7 @@ extension ImagesController: CartDelegate {
   func cart(_ cart: Cart, didRemove image: Image) {
     stackView.reload(cart.images)
     refreshView()
+    refreshSelectedAlbum()
   }
 
   func cartDidReload(_ cart: Cart) {
@@ -226,6 +227,7 @@ extension ImagesController: UICollectionViewDataSource, UICollectionViewDelegate
     } else {
       if Config.Camera.imageLimit == 0 || Config.Camera.imageLimit > cart.images.count{
         cart.add(item)
+        EventHub.shared.doneWithImages?()
       }
     }
 
